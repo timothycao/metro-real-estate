@@ -13,7 +13,7 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Contact',
+            name='Inquiry',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('listing', models.CharField(max_length=200)),
@@ -22,7 +22,7 @@ class Migration(migrations.Migration):
                 ('email', models.CharField(max_length=100)),
                 ('phone', models.CharField(max_length=100)),
                 ('message', models.TextField(blank=True)),
-                ('contact_date', models.DateTimeField(blank=True, default=datetime.datetime.now)),
+                ('inquiry_date', models.DateTimeField(blank=True, default=datetime.datetime.now)),
                 ('user_id', models.IntegerField(blank=True)),
             ],
         ),
