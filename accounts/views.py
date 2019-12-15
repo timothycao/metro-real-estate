@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages, auth
 from django.contrib.auth.models import User
+from inquiries.models import Inquiry
 
 def register(request):
   if request.method == 'POST':
@@ -61,4 +62,9 @@ def logout(request):
     return redirect('index')
 
 def dashboard(request):
-  return render(request, 'accounts/dashboard.html')
+  user_inquiries = Inquiry.objects.order_by('-inquiry_date').filter(user_id=request.user.id)
+
+  context = {
+    'inquiries': user_inquiries
+  }
+  return render(request, 'accounts/dashboard.html', context)
